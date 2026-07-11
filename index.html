@@ -30,8 +30,7 @@
             line-height: 2.3;
             letter-spacing: 0.08em;
             margin: 0;
-            /* ★画面の一番上とボタンの間の余白を「40px」から「15px」に縮小 */
-            padding: 15px 20px 40px 20px;
+            padding: 20px 20px 40px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -41,8 +40,7 @@
 
         /* 言語切り替えボタンのエリア */
         .lang-switcher {
-            /* ★ボタンと、下のテキストの間の余白を「40px」から「15px」に縮小 */
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             display: flex;
             gap: 10px;
         }
@@ -75,7 +73,7 @@
             max-width: 600px;
             width: 100%;
             text-align: center;
-            white-space: pre-wrap;
+            /* ★余計な挙動を消すために pre-wrap を廃止し、通常のブロック扱いに変更 */
             word-wrap: break-word;
             font-size: 15px;
         }
@@ -85,18 +83,28 @@
             display: none;
         }
 
+        /* ★activeになった時、上部に余計な余白（margin/padding）がつかないよう強制リセット */
         .lang-section.active {
             display: block;
+            margin: 0 !important;
+            padding: 0 !important;
         }
 
         .title-accent {
             color: #8b1c24;
             font-weight: 500;
-            /* ★タイトル直後の改行による巨大な空白を防ぐため、inline-blockに変更 */
-            display: inline-block;
-            /* ★タイトル下の無駄な余白をゼロに */
-            margin-bottom: 0px;
+            display: block;
+            /* ★タイトル直下の余白を「10px」に固定して強制的に詰めさせます */
+            margin: 0 auto 10px auto !important;
+            padding: 0 !important;
             letter-spacing: 0.2em;
+        }
+
+        /* ★文章全体のパラグラフ。ここで行間や改行をコントロールします */
+        .text-block {
+            margin: 0;
+            padding: 0;
+            white-space: pre-wrap;
         }
 
         .footer-thanks {
@@ -120,7 +128,9 @@
 
 <div class="content">
     <!-- 日本語 -->
-    <div id="lang-jp" class="lang-section active"><span class="title-accent">【ご報告】</span><br>konyaは亡くなりました。
+    <div id="lang-jp" class="lang-section active">
+        <span class="title-accent">【ご報告】</span>
+        <div class="text-block">konyaは亡くなりました。
 急な話で驚かせてしまうと思いますが、
 本人が「ここには知らせてほしい」とメモを残していたため、
 連絡させてもらっています。
@@ -139,7 +149,7 @@
 
 それと、konyaからイラストやプレゼントを受け取っている方へ。
 呪いとか一切入れてないから、そのまま安心して使ってもいいし捨てても大丈夫！
-普通に成幸福して地獄で踊り狂うつもりなので安心して
+普通に成仏して地獄で踊り狂うつもりなので安心して
 化けて出たらそれはkonyaじゃないです！！
 
 ご報告は以上です。
@@ -153,9 +163,12 @@
 ひとに愛されることは、なんという幸福だろう。
 
 konya</div>
+    </div>
 
     <!-- 英語 -->
-    <div id="lang-en" class="lang-section"><span class="title-accent">[Announcement]</span><br>No contact for over two weeks?! That means I'm dead!!
+    <div id="lang-en" class="lang-section">
+        <span class="title-accent">[Announcement]</span>
+        <div class="text-block">No contact for over two weeks?! That means I'm dead!!
 I'm sorry for always being so selfish, leaving things half-done, and causing you all so much trouble.
 Since the suspect has passed away, let’s just drop all charges and call it even!
 
@@ -182,9 +195,12 @@ I love humans.
 To be loved by people—what an absolute blessing.
 
 konya</div>
+    </div>
 
     <!-- 中国語 -->
-    <div id="lang-cn" class="lang-section"><span class="title-accent">【通知】</span><br>超过两周没联系？！那绝对是自杀了啦！！
+    <div id="lang-cn" class="lang-section">
+        <span class="title-accent">【通知】</span>
+        <div class="text-block">超过两周没联系？！那绝对是自杀了啦！！
 一直以来我总是随心所欲，丢下一堆烂摊子，给大家添了很多麻烦，真的很抱歉。
 既然嫌疑人已经死亡，那就当做无罪释放，一笔勾销吧！
 
@@ -206,14 +222,17 @@ I 打算在地狱里尽情狂舞，所以放一百个心吧。要是真有什么
 我的服务器大家随时都可以退出，请自便。
 
 最后，
-我觉得这并不是一段值得哭泣的人生，但也绝对是一段值得大笑的人生。
+我觉得这并不是段值得哭泣的人生，但也绝对是一段值得大笑的人生。
 I 喜欢人类。
 能被人们所爱，是多么巨大的幸福啊。
 
 konya</div>
+    </div>
 
     <!-- ロシア語 -->
-    <div id="lang-ru" class="lang-section"><span class="title-accent">[Извещение]</span><br>Нет связи больше двух недель?! Да я просто покончил(а) с собой!!
+    <div id="lang-ru" class="lang-section">
+        <span class="title-accent">[Извещение]</span>
+        <div class="text-block">Нет связи больше двух недель?! Да я просто покончил(а) с собой!!
 
 Простите, что всегда делал(а) что хотел(а), бросал(а) дела недоделанными и доставлял(а) вам столько хлопот.
 Подозреваемый мертв, так что дело закрыто за отсутствием состава преступления!
@@ -231,7 +250,7 @@ konya</div>
 Я собираюсь вовсю отрываться в танце в аду, так что не переживайте. Если кто-то явится к вам в виде призрака — это точно не konya, лол.
 
 На этом моё оповещение окончено.
-При integrity жизни мне было искренне весело общаться с вами.
+При жизни мне было искренне весело общаться с вами.
 Спасибо огромное за то, что дружили со мной!
 Вы можете выйти с моего сервера в любой момент, когда захотите.
 
@@ -241,6 +260,7 @@ konya</div>
 Быть любимым людьми — какое же это абсолютное счастье.
 
 konya</div>
+    </div>
 
     <!-- 共通フッター -->
     <div class="footer-thanks">
