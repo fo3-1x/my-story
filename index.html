@@ -108,19 +108,15 @@
 
 <!-- 言語切り替えボタン -->
 <div class="lang-switcher">
-    <button class="lang-btn active" onclick="switchLang('jp')">JP</button>
-    <button class="lang-btn" onclick="switchLang('en')">EN</button>
-    <button class="lang-btn" onclick="switchLang('cn')">CN</button>
-    <button class="lang-btn" onclick="switchLang('ru')">RU</button>
+    <button id="btn-jp" class="lang-btn active" onclick="switchLang('jp')">JP</button>
+    <button id="btn-en" class="lang-btn" onclick="switchLang('en')">EN</button>
+    <button id="btn-cn" class="lang-btn" onclick="switchLang('cn')">CN</button>
+    <button id="btn-ru" class="lang-btn" onclick="switchLang('ru')">RU</button>
 </div>
 
 <div class="content">
     <!-- 日本語 -->
-    <div id="lang-jp" class="lang-section active"><span class="title-accent">【ご報告】</span>konyaは亡くなりました。
-急な話で驚かせてしまうと思いますが、
-本人が「ここには知らせてほしい」とメモを残していたため、
-連絡させてもらっています。
-関わってくださっていた皆さんには、生前とても感謝していたことを伝えます。
+    <div id="lang-jp" class="lang-section active"><span class="title-accent">【ご報告】</span>二週間以上連絡がない？！それ自殺だから！！
 
 いつも好き放題で、やりっぱなしのこともたくさんでご迷惑をおかけしてすみません。
 被疑者死亡ということで無罪放免で！
@@ -248,3 +244,23 @@ I  LOVE   YOU ‼   I  LOVE  YOU  GUYS ‼
         &copy; 2026 fo3_1x. All rights reserved.
     </div>
 </div>
+
+<!-- 切り替え用スクリプト -->
+<script>
+    function switchLang(lang) {
+        // 1. 全ての文章セクションから active クラスを消して非表示にする
+        document.querySelectorAll('.lang-section').forEach(el => el.classList.remove('active'));
+        
+        // 2. 全てのボタンから active クラスを外す
+        document.querySelectorAll('.lang-btn').forEach(el => el.classList.remove('active'));
+        
+        // 3. クリックされた言語の文章を表示する
+        document.getElementById('lang-' + lang).classList.add('active');
+        
+        // 4. クリックされた言語のボタンに active クラスをつけて色を変える
+        document.getElementById('btn-' + lang).classList.add('active');
+    }
+</script>
+
+</body>
+</html>
