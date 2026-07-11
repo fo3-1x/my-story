@@ -5,15 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THANKS MY LIFE !!</title>
     
-    <!-- 美しい明朝体と多言語フォントの読み込み -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;500&family=Noto+Serif+SC:wght@300;500&family=Noto+Serif:wght@300;500&display=swap" rel="stylesheet">
     
-     <!-- ファビコン（タブに出る小さなアイコン）を設定する -->
-    <link rel="icon" href="https://fo3-1x.github.io/my-story/favicon.png" type="image/png">
+     <link rel="icon" href="https://fo3-1x.github.io/my-story/favicon.png" type="image/png">
 
-    <!-- Discordなどのサムネイル設定 -->
     <meta property="og:title" content="ご報告">
     <meta property="og:description" content="konyaからのご報告です。">
     <meta property="og:image" content="https://fo3-1x.github.io/my-story/thumbnail.png">
@@ -30,7 +27,7 @@
             line-height: 2.3;
             letter-spacing: 0.08em;
             margin: 0;
-            padding: 20px 20px 40px 20px;
+            padding: 40px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -40,17 +37,22 @@
 
         /* 言語切り替えボタンのエリア */
         .lang-switcher {
-            margin-bottom: 20px;
+            /* ★最初の動画の日本語の時と「まったく同じ空白」になるように数値を固定 */
+            margin-bottom: 40px;
             display: flex;
             gap: 10px;
         }
 
-        /* 言語切り替えボタンのエリア */
-        .lang-switcher {
-            margin-bottom: 45px; /* ★ここの数値を「20px」から「45px」くらいに増やします */
-            display: flex;
-            gap: 10px;
-        }
+        .lang-btn {
+            background-color: transparent;
+            border: 1px solid #4a1519;
+            color: #a9232c;
+            padding: 6px 16px;
+            font-size: 14px;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
         }
 
         .lang-btn:hover {
@@ -69,7 +71,7 @@
             max-width: 600px;
             width: 100%;
             text-align: center;
-            /* ★余計な挙動を消すために pre-wrap を廃止し、通常のブロック扱いに変更 */
+            white-space: pre-wrap;
             word-wrap: break-word;
             font-size: 15px;
         }
@@ -79,28 +81,16 @@
             display: none;
         }
 
-        /* ★activeになった時、上部に余計な余白（margin/padding）がつかないよう強制リセット */
         .lang-section.active {
             display: block;
-            margin: 0 !important;
-            padding: 0 !important;
         }
 
         .title-accent {
             color: #8b1c24;
             font-weight: 500;
             display: block;
-            /* ★タイトル直下の余白を「10px」に固定して強制的に詰めさせます */
-            margin: 0 auto 10px auto !important;
-            padding: 0 !important;
+            margin-bottom: 20px;
             letter-spacing: 0.2em;
-        }
-
-        /* ★文章全体のパラグラフ。ここで行間や改行をコントロールします */
-        .text-block {
-            margin: 0;
-            padding: 0;
-            white-space: pre-wrap;
         }
 
         .footer-thanks {
@@ -114,7 +104,6 @@
 </head>
 <body>
 
-<!-- 言語切り替えボタン -->
 <div class="lang-switcher">
     <button id="btn-jp" class="lang-btn active" onclick="switchLang('jp')">JP</button>
     <button id="btn-en" class="lang-btn" onclick="switchLang('en')">EN</button>
@@ -123,10 +112,7 @@
 </div>
 
 <div class="content">
-    <!-- 日本語 -->
-    <div id="lang-jp" class="lang-section active">
-        <span class="title-accent">【ご報告】</span>
-        <div class="text-block">konyaは亡くなりました。
+    <div id="lang-jp" class="lang-section active"><span class="title-accent">【ご報告】</span>konyaは亡くなりました。
 急な話で驚かせてしまうと思いますが、
 本人が「ここには知らせてほしい」とメモを残していたため、
 連絡させてもらっています。
@@ -145,7 +131,7 @@
 
 それと、konyaからイラストやプレゼントを受け取っている方へ。
 呪いとか一切入れてないから、そのまま安心して使ってもいいし捨てても大丈夫！
-普通に成仏して地獄で踊り狂うつもりなので安心して
+普通に成仏して地獄で踊り狂うつもりので安心して
 化けて出たらそれはkonyaじゃないです！！
 
 ご報告は以上です。
@@ -159,12 +145,8 @@
 ひとに愛されることは、なんという幸福だろう。
 
 konya</div>
-    </div>
 
-    <!-- 英語 -->
-    <div id="lang-en" class="lang-section">
-        <span class="title-accent">[Announcement]</span>
-        <div class="text-block">No contact for over two weeks?! That means I'm dead!!
+    <div id="lang-en" class="lang-section"><span class="title-accent">[Announcement]</span>No contact for over two weeks?! That means I'm dead!!
 I'm sorry for always being so selfish, leaving things half-done, and causing you all so much trouble.
 Since the suspect has passed away, let’s just drop all charges and call it even!
 
@@ -191,12 +173,8 @@ I love humans.
 To be loved by people—what an absolute blessing.
 
 konya</div>
-    </div>
 
-    <!-- 中国語 -->
-    <div id="lang-cn" class="lang-section">
-        <span class="title-accent">【通知】</span>
-        <div class="text-block">超过两周没联系？！那绝对是自杀了啦！！
+    <div id="lang-cn" class="lang-section"><span class="title-accent">【通知】</span>超过两周没联系？！那绝对是自杀了啦！！
 一直以来我总是随心所欲，丢下一堆烂摊子，给大家添了很多麻烦，真的很抱歉。
 既然嫌疑人已经死亡，那就当做无罪释放，一笔勾销吧！
 
@@ -218,17 +196,13 @@ I 打算在地狱里尽情狂舞，所以放一百个心吧。要是真有什么
 我的服务器大家随时都可以退出，请自便。
 
 最后，
-我觉得这并不是段值得哭泣的人生，但也绝对是一段值得大笑的人生。
+我觉得这并不是一段值得哭泣的人生，但也绝对是一段值得大笑的人生。
 I 喜欢人类。
 能被人们所爱，是多么巨大的幸福啊。
 
 konya</div>
-    </div>
 
-    <!-- ロシア語 -->
-    <div id="lang-ru" class="lang-section">
-        <span class="title-accent">[Извещение]</span>
-        <div class="text-block">Нет связи больше двух недель?! Да я просто покончил(а) с собой!!
+    <div id="lang-ru" class="lang-section"><span class="title-accent">[Извещение]</span>Нет связи больше двух недель?! Да я просто покончил(а) с собой!!
 
 Простите, что всегда делал(а) что хотел(а), бросал(а) дела недоделанными и доставлял(а) вам столько хлопот.
 Подозреваемый мертв, так что дело закрыто за отсутствием состава преступления!
@@ -256,20 +230,16 @@ konya</div>
 Быть любимым людьми — какое же это абсолютное счастье.
 
 konya</div>
-    </div>
 
-    <!-- 共通フッター -->
     <div class="footer-thanks">
 ＴＨＡＮＫＳ  ＭＹ ＬＩＦＥ  
 I  LOVE   YOU ‼   I  LOVE  YOU  GUYS ‼
     </div>
-    <!-- コピーライトの追加 -->
     <div style="margin-top: 40px; font-size: 12px; color: #4a1519; font-family: sans-serif;">
         &copy; 2026 fo3_1x. All rights reserved.
     </div>
 </div>
 
-<!-- 切り替え用スクリプト -->
 <script>
     function switchLang(lang) {
         // 1. 全ての文章セクションから active クラスを消して非表示にする
